@@ -17,5 +17,5 @@
 #include<utility>
 #include<cstdlib>
 #include<ctime>
-#include <iostream>
-#include <string.h>
+#include <math.h>
+
