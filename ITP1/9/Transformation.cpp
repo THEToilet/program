@@ -15,18 +15,7 @@ int main()
     if (order == "replace")
     {
       cin >> a >> b >> p;
-      if (a == 0)
-      {
-        str = p + str.substr(b + 1, str.size());
-      }
-      else if (b == str.size())
-      {
-        str = str.substr(0, a) + p;
-      }
-      else
-      {
-        str = str.substr(0, a) + p + str.substr(b + 1, str.size());
-      }
+      str.replace(a, p.size(), p);
    //   cout << str << "\n";
     }
     else
@@ -34,6 +23,7 @@ int main()
       cin >> a >> b;
       if (order == "reverse")
       {
+        // aからbまでを逆順
         for (int i = a; i < b + 1; i++)
         {
           st.push(str.at(i));
@@ -43,30 +33,15 @@ int main()
           oldstr += st.top();
           st.pop();
         }
-        if (a == 0)
-        {
-          str = oldstr + str.substr(b + 1, str.size());
-        }
-        else if (b == str.size())
-        {
-          str = str.substr(0, a) + oldstr;
-        }
-        else
-        {
-          str = str.substr(0, a) + oldstr + str.substr(b + 1, str.size());
-        }
-  //      cout << str << "\n";
+      //  cout << oldstr << "\n"; // 連結
+        str.replace(a, oldstr.size(), oldstr);
+     //   cout << str << "\n";
+        oldstr = "";
       }
       else
       {
-        if (b == str.size())
-        {
-          cout << str.substr(a, b) << "\n";
-        }
-        else
-        {
-          cout << str.substr(a, b) << "\n";
-        }
+        cout << str.substr(a, b - a + 1) << "\n";
+      //  cout << str << "\n";
       }
     }
   }
