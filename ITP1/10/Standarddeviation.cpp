@@ -3,7 +3,7 @@ using namespace std;
 int main()
 {
   int n;
-  int average = 0;
+  double average = 0;
   double d = 0;
   int s[1000];
   cin >> n;
@@ -25,6 +25,7 @@ int main()
     d = d/n;
     printf("%.8lf\n", sqrt(d));
     cin >> n;
+    d = 0;
     average = 0;
   }
 }
