@@ -3,25 +3,27 @@ using namespace std;
 int main()
 {
   int N, A, B;
-  int add;
+  int add = 0;
   int sum = 0;
   /* 各桁の数字 */
   int dig;
   cin >> N >> A >> B;
   for (int i = A; i <= N; i++)
   {
-    while (i != 0)
+    int tmp = i;
+    while (tmp != 0)
     {
-      dig = i % 10;
+      dig = tmp % 10;
       add = add + dig;
-      i = i / 10;
-      cout << i << endl;
+      tmp = tmp / 10;
     }
 
-    if (A <= add && add >= B)
+    if (A <= add && add <= B)
     {
+     // cout << i << endl;
       sum += i;
     }
+    add = 0;
   }
   cout << sum << "\n";
 }
