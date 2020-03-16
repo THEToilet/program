@@ -3,35 +3,31 @@ using namespace std;
 int main()
 {
   int N;
-  int mix;
-  int mixN;
   cin >> N;
-  int od = 0;
+  int a;
+  int max;
+  int point = 1;
   vector<int> d;
-  vector<int> nd;
   for (int i = 0; i < N; i++)
   {
-    int a;
     cin >> a;
     d.push_back(a);
   }
-  for (int j = 0; j < N; j++)
+
+  sort(d.begin(), d.end());
+  reverse(d.begin(), d.end());
+
+  for (int i = 0; i < N; i++)
   {
-    for (int i = 0; i < N; i++)
+    if (i == 0)
     {
-      if (i == 0)
-      {
-        mix = d.at(i);
-        mixN = 0;
-      }
-      if (mix < d.at(i))
-      {
-        mix = d.at(i);
-        mixN = i;
-      }
+      max = d[i];
     }
-    nd.push_back(mix);
-    d.at(mixN) = 1000;
+    if (max > d[i])
+    {
+      max = d[i];
+      point++;
+    }
   }
-  cout << nd.size() << endl;
+  cout << point << endl;
 }
