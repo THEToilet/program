@@ -19,3 +19,4 @@
 #include<ctime>
 #include <iostream>
 #include <string.h>
+#include <string>
