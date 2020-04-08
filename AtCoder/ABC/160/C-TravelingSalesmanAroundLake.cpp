@@ -1,44 +1,18 @@
 #include <bits/stdc++.h>
+#define rep(i, n) for (int i = 0; i < (n); i++)
 using namespace std;
 int main()
 {
-  long int K;
-  long int N;
-  long int sum = 0;
+  int K, N;
   cin >> K >> N;
-  vector<int> A;
-  vector<int> neo;
-
-  for (int i = 0; i < N; i++)
+  vector<int> A(N);
+  rep(i, N) cin >> A[i];
+  A.push_back(A[0] + K);
+  int l = 0;
+  rep(i, N)
   {
-    int a;
-    cin >> a;
-    A.push_back(a);
+    l = max(l, A[i + 1] - A[i]);
   }
-
-  for (int i = 0; i < N; i++)
-  {
-    long int temp = A.at(i);
-    if (i == 0)
-    {
-      neo.push_back(A.at(i) + K - A.at(N - 1));
-      neo.push_back(A.at(i + 1) - A.at(i));
-    }
-    if (i == N - 1)
-    {
-      break;
-    }
-    neo.push_back(A.at(i + 1) - A.at(i));
-  }
-  //sort(neo.begin(), neo.end());
-
-  for (int i = 0; i < N; i++)
-  {
-    cout << neo.at(i) << endl;
-  }
-  for (int i = 0; i < N - 1; i++)
-  {
-    sum += neo.at(i);
-  }
-  cout << sum << endl;
+  int ans = K - l;
+  cout << ans << endl;
 }
