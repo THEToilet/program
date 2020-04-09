@@ -5,16 +5,40 @@ int main()
 {
   int N, M;
   cin >> N >> M;
-  vector<int> s(M);
-  vector<int> c(M);
-  char ans[3];
-  rep(i, 3) ans[i] = -1;
+  vector<pair<int, int>> P(M);
   rep(i, M)
   {
-    cin >> s[i] >> c[i];
+    cin >> P[i].first >> P[i].second;
   }
-  rep(i, M)
+  // 全探査
+  rep(x, 1000)
   {
-    ans[s[i] - 1] = c[i];
+    int nx = x / 10;
+    vector<int> d(1, x % 10);
+    // 分解
+    while (nx)
+    {
+      d.push_back(nx % 10);
+      nx /= 10;
+    }
+    reverse(d.begin(), d.end());
+    if (d.size() != N)
+    {
+      continue;
+    }
+    bool is = true;
+    rep(i, M)
+    {
+      if (d[P[i].first - 1] != P[i].second)
+      {
+        is = false;
+      }
+    }
+    if (is)
+    {
+      cout << x << endl;
+      return 0;
+    }
   }
+  cout << -1 << endl;
 }
