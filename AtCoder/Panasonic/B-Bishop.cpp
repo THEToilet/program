@@ -4,16 +4,12 @@ int main()
 {
   unsigned long int H, W;
   cin >> H >> W;
-  unsigned long long int a = H * W;
-
-  if (a % 2 == 0)
+  if (H == 1 || W == 1)
   {
-    a = a >> 1;
-    cout << floor(a) << endl;
+    cout << 1 << endl;
   }
   else
   {
-    a = a >> 1;
-    cout << floor(a + 1) << endl;
+    cout << (H * W + 1) / 2 << endl;
   }
 }
