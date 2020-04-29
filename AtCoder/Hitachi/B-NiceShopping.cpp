@@ -1,49 +1,32 @@
 #include <bits/stdc++.h>
+#define rep(i, n) for (int i = 0; i < (n); i++)
+typedef long long ll;
 using namespace std;
-// Fault
 int main()
 {
   int A, B, M;
-  int X, Y, C;
-  int t;
-  int min = 0;
-  int tmp;
-  deque<int> a;
-  deque<int> b;
-  deque<int> x;
-  deque<int> y;
-  deque<int> c;
   cin >> A >> B >> M;
-  for (int i = 0; i < A; i++)
+  vector<int> a(A), b(B);
+  vector<int> x(M), y(M), c(M);
+  rep(i, A)
   {
-    cin >> t;
-    a.push_front(t);
+    cin >> a[i];
   }
-  for (int i = 0; i < B; i++)
+  rep(i, B)
   {
-    cin >> t;
-    b.push_front(t);
+    cin >> b[i];
   }
-  for (int j = 0; j < M; j++)
-  {
-    cin >> X;
-    cin >> Y;
-    cin >> C;
-    x.push_front(X);
-    y.push_front(Y);
-    c.push_front(C);
-  }
+  int minA = *min_element(a.begin(), a.end());
+  int minB = *min_element(b.begin(), b.end()); // 最小値のイテレータを返してくれる
+  int ans = minA + minB;
   for (int i = 0; i < M; i++)
   {
-    tmp = a.at(x.at(i)) + b.at(y.at(i)) - c.at(i);
-    if(i==0){
-      min = tmp;
-    }
-    cout << tmp << endl;
-    if (tmp < min)
-    {
-      min = tmp;
-    }
+    int x, y, c;
+    cin >> x >> y >> c;
+    x--;
+    y--;
+    ans = min(ans, a[x] + b[y] - c);
   }
-  cout << min << endl;
+  cout << ans << endl;
+  return 0;
 }
