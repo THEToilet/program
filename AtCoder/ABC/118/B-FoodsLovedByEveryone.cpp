@@ -26,6 +26,6 @@ int main()
     {
       ++ans;
     }
-  }cd 
+  }
   cout << ans << endl;
 }
