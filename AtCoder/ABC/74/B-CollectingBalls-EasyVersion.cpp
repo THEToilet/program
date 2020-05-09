@@ -6,11 +6,17 @@ int main()
 {
   int N, K;
   cin >> N >> K;
-  vector<int> x(N);
-  rep(i, N)
+  vector<int> X(N);
+  for (int i = 0; i < N; ++i)
   {
-    cin >> x[i];
+    cin >> X[i];
   }
-
+  int ans = 0;
+  for (int i = 0; i < N; ++i)
+  {
+    int tmp = min(X[i], K - X[i]);
+    ans += tmp;
+  }
+  cout << ans * 2 << endl;
   return 0;
 }
