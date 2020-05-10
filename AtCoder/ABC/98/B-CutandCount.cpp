@@ -36,7 +36,8 @@ int main()
   int ans = 0;
   rep(i, N + 1)
   {
-    int tmp = f(S.substr(0, i), S.substr(i));
+    int tmp = f(S.substr(0, i), S.substr(i));// 2番目以降の全体からなる部分文字列を取得する
+
     ans = max(ans, tmp);
   }
   cout << ans << endl;
