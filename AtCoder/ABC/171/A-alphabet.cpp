@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+#define rep(i, n) for (int i = 0; i < (n); i++)
+typedef long long ll;
+using namespace std;
+int main()
+{
+  char a;
+  cin >> a;
+  if (a >= 65 && a <= 90)
+  {
+    cout << "A" << endl;
+  }
+  else
+  {
+    cout << "a" << endl;
+  }
+  return 0;
+}
