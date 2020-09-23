@@ -4,20 +4,15 @@ typedef long long ll;
 using namespace std;
 int main()
 {
-  ll N;
+  long long N;
   cin >> N;
-  ll K = N % 26;
-  string ans;
-  ll count = 0;
-  do
+  string res = "";
+  while (N)
   {
-    ans += char(K + 96);
-    N = (N-26) / 26;
-    K = N % 26;
-    count++;
-  } while (N != 0);
-
-  reverse(ans.begin(),ans.end());
-  cout << ans << endl;
-  return 0;
+    N--;
+    res += (char)('a' + (N % 26));
+    N /= 26;
+  }
+  reverse(res.begin(), res.end());
+  cout << res << endl;
 }

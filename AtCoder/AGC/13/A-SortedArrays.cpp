@@ -6,23 +6,32 @@ int main()
 {
   int N;
   cin >> N;
-  vector<ll> A(N);
-  ll b = A[0];
-  bool inc = false;
-  bool dec = false;
-  int ans = 0;
+  vector<int> a(N);
   rep(i, N)
   {
-    if (b >= A[i])
-    {
-      dec = true;
-    }
-    else
-    {
-      inc = true;
-    }
-    b = A[i];
-    ans++;
+    cin >> a[i];
   }
+  int dir = 0;
+  int ans = 0;
+  rep(i, N - 1)
+  {
+    if (dir == 0)
+    {
+      if (a[i] < a[i + 1])
+      {
+        dir = 1;
+      }
+      if (a[i] > a[i + 1])
+      {
+        dir = -1;
+      }
+    }
+    else if ((dir == 1 && a[i] > a[i + 1]) || (dir == -1 && a[i] < a[i + 1]))
+    {
+      ans++;
+      dir = 0;
+    }
+  }
+  cout << ans + 1 << endl;
   return 0;
 }

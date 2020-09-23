@@ -4,13 +4,14 @@ typedef long long ll;
 using namespace std;
 int main()
 {
-  ll A;
-  double B;
-  cin >> A >> B;
-  // (A × (B × 100))/100
-  ll ans = (B * 100 + 0.5); // ここで整数に変換
-  ans = A * ans / 100;
+  int N, K;
+  cin >> N >> K;
+  vector<int> A(N);
+  rep(i, N)
+  {
+    cin >> A[i];
+  }
+  ll ans = (N - 2) / (K - 1) + 1;
   cout << ans << endl;
-
   return 0;
 }
