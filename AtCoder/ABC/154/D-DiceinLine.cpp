@@ -4,17 +4,44 @@ typedef long long ll;
 using namespace std;
 int main()
 {
-  int K, N;
-  cin >> K >> N;
-  map<int, int> m;
+  int N, K;
+  cin >> N >> K;
+  vector<double> q(N);
+  vector<double> s(N);
   rep(i, N)
   {
     int tmp;
     cin >> tmp;
-    m[tmp]++;
+    //q[i] = ((tmp * (tmp + 1)) / 2) / tmp;
+    q[i] = ((tmp + 1)) / 2.0;
+    cout << q[i] << endl;
   }
-
-  double ans = () / K;
-  cout << ans << endl;
+  rep(i, N)
+  {
+    if (i == 0)
+    {
+      s[i] += q[i];
+    }
+    else
+    {
+      s[i] += s[i - 1] + q[i];
+    }
+    cout << s[i] << endl;
+  }
+  double ans = 0;
+  rep(i, N)
+  {
+    if (K - 1 == 0)
+    {
+      ans = max(ans, s[0]);
+    }
+    if ((i + K < N))
+    {
+      ans = max(ans, s[i + K] - s[i]);
+      cout << i + K - 1 << "==" << i << endl;
+    }
+  }
+  //cout << ans << endl;
+  printf("%.12lf\n", ans);
   return 0;
 }
