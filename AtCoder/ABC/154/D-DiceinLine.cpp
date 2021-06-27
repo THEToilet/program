@@ -7,7 +7,7 @@ int main()
   int N, K;
   cin >> N >> K;
   vector<double> q(N);
-  vector<double> s(N);
+  vector<double> s(N + 1);
   rep(i, N)
   {
     int tmp;
@@ -16,30 +16,19 @@ int main()
     q[i] = ((tmp + 1)) / 2.0;
     cout << q[i] << endl;
   }
-  rep(i, N)
+  s[0] = 0;
+  for (int i = 1; i < N + 1; i++)
   {
-    if (i == 0)
-    {
-      s[i] += q[i];
-    }
-    else
-    {
-      s[i] += s[i - 1] + q[i];
-    }
+    s[i] += s[i - 1] + q[i - 1];
     cout << s[i] << endl;
   }
   double ans = 0;
-  rep(i, N)
+  for (int i = 1; i < N + 1; i++)
   {
-    if (K - 1 == 0)
-    {
-      ans = max(ans, s[0]);
-    }
-    if ((i + K < N))
-    {
-      ans = max(ans, s[i + K] - s[i]);
-      cout << i + K - 1 << "==" << i << endl;
-    }
+    if (i + K > N + 1)
+      break;
+    ans = max(ans, s[i + K] - s[i - 1]);
+    cout << i + K << "==" << i << " : " << s[i + K] - s[i - 1] << "   " << s[i + K] << " : " << s[i - 1] << endl;
   }
   //cout << ans << endl;
   printf("%.12lf\n", ans);
