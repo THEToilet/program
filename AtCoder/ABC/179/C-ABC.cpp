@@ -4,17 +4,31 @@ typedef long long ll;
 using namespace std;
 int main()
 {
-  ll N;
+  int N;
   cin >> N;
-  ll a, b, c;
-  ll ans = 0;
-  for (c = 1; c < N; c++)
+  int ans = 0;
+  for (int c = N; c > 0; c--)
   {
-    for (a = 1; a * a <= N; a++)
+    for (int i = 1; i * i <= N - c; i++)
     {
-      if ((N - c) % a == 0)
+      if ((N - c) % i == 0)
       {
-        if (a * a == N - c)
+        ans++;
+        if ((N - c) / i != i)
+        {
+          ans++;
+        }
+      }
+    }
+    /*
+    for (a = 1; a * a <= N - c; a++)
+    {
+      //cout << "a " << a << " a*a " << a * a << endl;
+      int t = (N - c) % a;
+      int b = (N - c) / a;
+      if (t == 0 && b != 0)
+      {
+        if (b == a)
         {
           ans++;
         }
@@ -25,6 +39,7 @@ int main()
         cout << a << " " << (N - c) / a << " " << c << endl;
       }
     }
+    */
   }
   cout << ans << endl;
   return 0;
